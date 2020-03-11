@@ -20,15 +20,9 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: FortifyOnDemandStatic@5
+    
+- task: FortifyDynamicAssessment@5
   inputs:
-    FortifyProjects: '.'
-    BSIToken: 'eyJ0ZW5hbnRJZCI6NjgsInRlbmFudENvZGUiOiJGcmFua2xpbkJhbmsiLCJyZWxlYXNlSWQiOjIyMDg1MywicGF5bG9hZFR5cGUiOiJBTkFMWVNJU19QQVlMT0FEIiwiYXNzZXNzbWVudFR5cGVJZCI6Mjc0LCJ0ZWNobm9sb2d5VHlwZSI6IkpBVkEvSjJFRSIsInRlY2hub2xvZ3lUeXBlSWQiOjcsInRlY2hub2xvZ3lWZXJzaW9uIjoiMS44IiwidGVjaG5vbG9neVZlcnNpb25JZCI6MTIsImF1ZGl0UHJlZmVyZW5jZSI6IkF1dG9tYXRlZCIsImF1ZGl0UHJlZmVyZW5jZUlkIjoyLCJpbmNsdWRlVGhpcmRQYXJ0eSI6ZmFsc2UsImluY2x1ZGVPcGVuU291cmNlQW5hbHlzaXMiOmZhbHNlLCJwb3J0YWxVcmkiOiJodHRwczovL2Ftcy5mb3J0aWZ5LmNvbSIsImFwaVVyaSI6Imh0dHBzOi8vYXBpLmFtcy5mb3J0aWZ5LmNvbSIsInNjYW5QcmVmZXJlbmNlIjoiU3RhbmRhcmQiLCJzY2FuUHJlZmVyZW5jZUlkIjoxfQ=='
-    APIAuthenticationType: '1'
-    APIKey: 'f634973a-9747-4fb8-a0a9-bdacbbeb5342'
-    APISecret: 'YWdBPHY5Z1FXVnUmWTV0d2RDRltpVzVyaXFQNDBI0'
-    EntitlementPreference: '1'
-    InProgressScanActionType: '0'
-    RemediationScanPreference: '0'
-    PolicyFailAction: '0'
-    PurchaseEntitlements: false
+    ScanSettings: 'Default'
+    APIRoot: 'http://15.113.170.49:8083/'
+    ScanResultsLocation: 'scan.fpr'
