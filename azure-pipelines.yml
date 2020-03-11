@@ -25,4 +25,4 @@ steps:
   inputs:
     ScanSettings: 'Default'
     APIRoot: 'http://15.113.170.49:8083/'
-    ScanResultsLocation: 'scan.fpr'
+    ScanResultsLocation: '/home/vsts/work/1/s'
