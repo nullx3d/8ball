@@ -20,6 +20,8 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
+
     
 - task: FortifyOnDemandStatic@5
   inputs:
@@ -29,7 +31,7 @@ steps:
     APIKey: '135a9292-612a-4e47-b1b0-a192f3df2fb9'
     APISecret: 'UTRxc0hOQ0MveTVkMyF2V1JHVnFiT2VjYjhIMF1z0'
     EntitlementPreference: '1'
-    PurchaseEntitlements: false
+    PurchaseEntitlements: false    
     InProgressScanActionType: '0'
     RemediationScanPreference: '0'
     PolicyFailAction: '0'
