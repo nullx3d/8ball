@@ -64,7 +64,7 @@ steps:
     scaDebug: false
     runFortifyScan: true
     fortifyScanType: 'ScanCentralScan'
-    scanCentralFortifyServerName: 'SSC'
+    scanCentralFortifyServerName: 'SSC-SC'
     scanCentralRunFortifyUpload: true
     scanCentralFortifyApplicationName: 'EightBall'
     scanCentralFortifyApplicationVersion: '1'
