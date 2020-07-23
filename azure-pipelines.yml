@@ -35,6 +35,23 @@ steps:
 #    RemediationScanPreference: '0'
 #    PolicyFailAction: '0'
 
+#- task: FortifySCA@6
+#  inputs:
+#    runBuildTranslate: true
+#    applicationType: 'other'
+#    buildToolOptions: 'mvn com.fortify.sca.plugins.maven:sca-maven-plugin:translate'
+#    fortifyBuildId: '8ball'
+#    runFortifyRulepackUpdate: false
+#    runFortifyClean: true
+#    scaVerbose: false
+#    scaDebug: false
+#    runFortifyScan: true
+#    fortifyScanType: 'LocalScan'
+#    runFortifyUpload: true
+#    fortifyServerName: 'SSC'
+#    fortifyApplicationName: 'EightBall'
+#    fortifyApplicationVersion: '1'
+
 - task: FortifySCA@6
   inputs:
     runBuildTranslate: true
@@ -46,8 +63,8 @@ steps:
     scaVerbose: false
     scaDebug: false
     runFortifyScan: true
-    fortifyScanType: 'LocalScan'
-    runFortifyUpload: true
-    fortifyServerName: 'SSC'
-    fortifyApplicationName: 'EightBall'
-    fortifyApplicationVersion: '1'
+    fortifyScanType: 'ScanCentralScan'
+    scanCentralFortifyServerName: 'SSC'
+    scanCentralRunFortifyUpload: true
+    scanCentralFortifyApplicationName: 'EightBall'
+    scanCentralFortifyApplicationVersion: '1'
