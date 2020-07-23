@@ -23,15 +23,28 @@ steps:
 
 
     
-- task: FortifyOnDemandStatic@5
+#- task: FortifyOnDemandStatic@5
+#  inputs:
+#    FortifyProjects: '.'
+#    BSIToken: 'eyJ0ZW5hbnRJZCI6NjgsInRlbmFudENvZGUiOiJGcmFua2xpbkJhbmsiLCJyZWxlYXNlSWQiOjI0MjY4MywicGF5bG9hZFR5cGUiOiJBTkFMWVNJU19QQVlMT0FEIiwiYXNzZXNzbWVudFR5cGVJZCI6Mjc0LCJ0ZWNobm9sb2d5VHlwZSI6IkpBVkEvSjJFRSIsInRlY2hub2xvZ3lUeXBlSWQiOjcsInRlY2hub2xvZ3lWZXJzaW9uIjoiMS44IiwidGVjaG5vbG9neVZlcnNpb25JZCI6MTIsImF1ZGl0UHJlZmVyZW5jZSI6IkF1dG9tYXRlZCIsImF1ZGl0UHJlZmVyZW5jZUlkIjoyLCJpbmNsdWRlVGhpcmRQYXJ0eSI6ZmFsc2UsImluY2x1ZGVPcGVuU291cmNlQW5hbHlzaXMiOmZhbHNlLCJwb3J0YWxVcmkiOiJodHRwczovL2Ftcy5mb3J0aWZ5LmNvbSIsImFwaVVyaSI6Imh0dHBzOi8vYXBpLmFtcy5mb3J0aWZ5LmNvbSIsInNjYW5QcmVmZXJlbmNlIjoiU3RhbmRhcmQiLCJzY2FuUHJlZmVyZW5jZUlkIjoxfQ=='
+#    APIAuthenticationType: '1'
+#    APIKey: '135a9292-612a-4e47-b1b0-a192f3df2fb9'
+#    APISecret: 'UTRxc0hOQ0MveTVkMyF2V1JHVnFiT2VjYjhIMF1z0'
+#    EntitlementPreference: '1'
+#    PurchaseEntitlements: false    
+#    InProgressScanActionType: '0'
+#    RemediationScanPreference: '0'
+#    PolicyFailAction: '0'
+
+- task: FortifySCA@6
   inputs:
-    FortifyProjects: '.'
-    BSIToken: 'eyJ0ZW5hbnRJZCI6NjgsInRlbmFudENvZGUiOiJGcmFua2xpbkJhbmsiLCJyZWxlYXNlSWQiOjI0MjY4MywicGF5bG9hZFR5cGUiOiJBTkFMWVNJU19QQVlMT0FEIiwiYXNzZXNzbWVudFR5cGVJZCI6Mjc0LCJ0ZWNobm9sb2d5VHlwZSI6IkpBVkEvSjJFRSIsInRlY2hub2xvZ3lUeXBlSWQiOjcsInRlY2hub2xvZ3lWZXJzaW9uIjoiMS44IiwidGVjaG5vbG9neVZlcnNpb25JZCI6MTIsImF1ZGl0UHJlZmVyZW5jZSI6IkF1dG9tYXRlZCIsImF1ZGl0UHJlZmVyZW5jZUlkIjoyLCJpbmNsdWRlVGhpcmRQYXJ0eSI6ZmFsc2UsImluY2x1ZGVPcGVuU291cmNlQW5hbHlzaXMiOmZhbHNlLCJwb3J0YWxVcmkiOiJodHRwczovL2Ftcy5mb3J0aWZ5LmNvbSIsImFwaVVyaSI6Imh0dHBzOi8vYXBpLmFtcy5mb3J0aWZ5LmNvbSIsInNjYW5QcmVmZXJlbmNlIjoiU3RhbmRhcmQiLCJzY2FuUHJlZmVyZW5jZUlkIjoxfQ=='
-    APIAuthenticationType: '1'
-    APIKey: '135a9292-612a-4e47-b1b0-a192f3df2fb9'
-    APISecret: 'UTRxc0hOQ0MveTVkMyF2V1JHVnFiT2VjYjhIMF1z0'
-    EntitlementPreference: '1'
-    PurchaseEntitlements: false    
-    InProgressScanActionType: '0'
-    RemediationScanPreference: '0'
-    PolicyFailAction: '0'
+    fortifyBuildId: '8ball'
+    runBuildTranslate: true
+    applicationType: 'other'
+    buildToolOptions: 'mvn com.fortify.sca.plugins.maven:sca-maven-plugin:translate'
+    runFortifyRulepackUpdate: false
+    runFortifyClean: true
+    scaVerbose: false
+    scaDebug: false
+    runFortifyScan: true
+    fortifyScanType: 'LocalScan'
