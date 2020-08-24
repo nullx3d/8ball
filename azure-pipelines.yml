@@ -68,3 +68,9 @@ steps:
 #    scanCentralRunFortifyUpload: true
 #    scanCentralFortifyApplicationName: 'EightBall'
 #    scanCentralFortifyApplicationVersion: '1'
+
+- task: FortifyDynamicAssessment@6
+  inputs:
+    ScanSettings: 'zerodefault'
+    APIRoot: 'http://10.229.222.183:8083/'
+    ScanResultsLocation: 'c:\tools\_work'
