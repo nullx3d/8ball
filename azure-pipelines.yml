@@ -20,15 +20,15 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: FortifyOnDemandStatic@7
-  inputs:
-    FortifyProjects: '.'
-    ReleaseId: 242683
-    FodConnection: 'FoD'
-    EntitlementPreference: '1'
-    InProgressScanActionType: '2'
-    RemediationScanPreference: '2'
-    PolicyFailAction: '0'
+#- task: FortifyOnDemandStatic@7
+#  inputs:
+#    FortifyProjects: '.'
+#    ReleaseId: 242683
+#    FodConnection: 'FoD'
+#    EntitlementPreference: '1'
+#    InProgressScanActionType: '2'
+#    RemediationScanPreference: '2'
+#    PolicyFailAction: '0'
 
 - task: FortifyOnDemandDynamic@7
   inputs:
