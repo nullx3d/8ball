@@ -20,8 +20,27 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
+- task: FortifyOnDemandStatic@7
+  inputs:
+    FortifyProjects: '.'
+    ReleaseId: 242683
+    FodConnection: 'FoD'
+    EntitlementPreference: '1'
+    InProgressScanActionType: '2'
+    RemediationScanPreference: '2'
+    PolicyFailAction: '0'
 
-    
+- task: FortifyOnDemandDynamic@7
+  inputs:
+    APIUrl: 'https://api.ams.fortify.com'
+    ReleaseId: '280727'
+    APIAuthenticationType: '1'
+    APIKey: '135a9292-612a-4e47-b1b0-a192f3df2fb9'
+    APISecret: 'RUg1JUlOd2xKMDdZcXlDYUU1aWQxfEYiQnRGR3hU0'
+    EntitlementPreference: '2'
+    PurchaseEntitlements: false
+    PreferRemediation: false
+        
 #- task: FortifyOnDemandStatic@5
 #  inputs:
 #    FortifyProjects: '.'
@@ -35,25 +54,25 @@ steps:
 #    RemediationScanPreference: '0'
 #    PolicyFailAction: '0'
 
-- task: FortifySCA@6
-  inputs:
-    runBuildTranslate: true
-    applicationType: 'other'
-    buildToolOptions: 'mvn com.fortify.sca.plugins.maven:sca-maven-plugin:translate'
-    fortifyBuildId: '8ball'
-    runFortifyRulepackUpdate: false
-    runFortifyClean: true
-    scaVerbose: false
-    scaDebug: false
-    runFortifyScan: true
-    fortifyScanType: 'LocalScan'
-    runFortifyUpload: true
-    fortifyServerName: 'SSC'
-    fortifyApplicationName: 'EightBall'
-    fortifyApplicationVersion: '1'
+#- task: FortifySCA@6
+#  inputs:
+#    runBuildTranslate: true
+#    applicationType: 'other'
+#    buildToolOptions: 'mvn com.fortify.sca.plugins.maven:sca-maven-plugin:translate'
+#    fortifyBuildId: '8ball'
+#    runFortifyRulepackUpdate: false
+#    runFortifyClean: true
+#    scaVerbose: false
+#    scaDebug: false
+#    runFortifyScan: true
+#    fortifyScanType: 'LocalScan'
+#    runFortifyUpload: true
+#    fortifyServerName: 'SSC'
+#    fortifyApplicationName: 'EightBall'
+#    fortifyApplicationVersion: '1'
 
-- task: FortifyDynamicAssessment@6
-  inputs:
-    ScanSettings: 'zerodefault'
-    APIRoot: 'http://10.229.222.183:8083/'
-    ScanResultsLocation: 'c:\tools\_work'
+#- task: FortifyDynamicAssessment@6
+#  inputs:
+#    ScanSettings: 'zerodefault'
+#    APIRoot: 'http://10.229.222.183:8083/'
+#    ScanResultsLocation: 'c:\tools\_work'
