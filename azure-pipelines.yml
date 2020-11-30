@@ -35,7 +35,7 @@ steps:
     APIUrl: 'https://api.ams.fortify.com'
     ReleaseId: '280727'
     APIAuthenticationType: '1'
-    APIKey: '135a9292-612a-4e47-b1b0-a192f3df2fb9'
+    APIKey: '12c8a4bf-7d0d-47fb-993a-e5f4c1a1c3d5'
     APISecret: 'RUg1JUlOd2xKMDdZcXlDYUU1aWQxfEYiQnRGR3hU0'
     EntitlementPreference: '2'
     PurchaseEntitlements: false
