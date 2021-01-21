@@ -24,7 +24,7 @@ steps:
   inputs:
     FortifyProjects: '.'
     ReleaseId: 242683
-    FodConnection: 'FoD'
+    FodConnection: 'FoD_8ball'
     EntitlementPreference: '1'
     InProgressScanActionType: '2'
     RemediationScanPreference: '2'
