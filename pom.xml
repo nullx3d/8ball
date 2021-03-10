@@ -10,6 +10,10 @@
 		<url>https://software.microfocus.com/software/enterprise-security</url>
 		<name>Fortify</name>
 	</organization>
+	<properties>
+     		<maven.compiler.source>1.8</maven.compiler.source>
+     		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
