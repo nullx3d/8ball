@@ -29,7 +29,7 @@
 					<plugin>
 						<groupId>com.fortify.sca.plugins.maven</groupId>
 						<artifactId>sca-maven-plugin</artifactId>
-						<version>18.20</version>
+						<version>20.2.0</version>
 						<executions>
 							<execution>
 								<goals>
