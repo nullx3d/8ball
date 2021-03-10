@@ -45,7 +45,7 @@ jobs:
       #   For other build tools, add your build commands to the workflow to download necessary dependencies and prepare according to Fortify SCA documentation.
       - name: Perform SAST Scan
         #run: scancentral.bat -url http://10.229.222.183:8999/scancentral-ctrl/ start -bt mvn -upload -uptoken 28206748-9abb-4e76-bd77-796ec9fd33f2 -application "EightBall" -version "1" 
-        run: scancentral -url $URL start $BUILD_OPTS -upload -uptoken $TOKEN -application "$APPLICATION" -version "$VERSION" 
+        run: scancentral.bat -url $URL start $BUILD_OPTS -upload -uptoken $TOKEN -application "$APPLICATION" -version "$VERSION" 
         env:                                            
           URL: ${{ secrets.SSC_URL }}
           TOKEN: ${{ secrets.SSC_UPLOAD_TOKEN }}
