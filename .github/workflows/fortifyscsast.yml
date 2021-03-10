@@ -51,8 +51,8 @@ jobs:
           APPLICATION: "EightBall"
           VERSION: "1"
           BUILD_OPTS: "-bt mvn"
-        #run: scancentral -url $URL start $BUILD_OPTS -upload -uptoken $TOKEN -application "$APPLICATION" -version "$VERSION"
-        run: echo "$URL"
+        #run: scancentral -url $env:URL start env:$BUILD_OPTS -upload -uptoken $env:TOKEN -application "$env:APPLICATION" -version "$env:VERSION"
+        run: echo "$env:URL"
         
       ### Archive ScanCentral Client logs on failure ###
       - name: Save ScanCentral Logs
