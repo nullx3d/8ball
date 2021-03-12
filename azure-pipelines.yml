@@ -20,40 +20,6 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-#- task: FortifyOnDemandStatic@7
-#  inputs:
-#    FortifyProjects: '.'
-#    ReleaseId: 242683
-#    FodConnection: 'FoD_8ball'
-#    EntitlementPreference: '1'
-#    InProgressScanActionType: '2'
-#    RemediationScanPreference: '2'
-#    PolicyFailAction: '0'
-
-#- task: FortifyOnDemandDynamic@7
-#  inputs:
-#    APIUrl: 'https://api.ams.fortify.com'
-#    ReleaseId: '280727'
-#    APIAuthenticationType: '1'
-#    APIKey: '12c8a4bf-7d0d-47fb-993a-e5f4c1a1c3d5'
-#    APISecret: 'RUg1JUlOd2xKMDdZcXlDYUU1aWQxfEYiQnRGR3hU0'
-#    EntitlementPreference: '2'
-#    PurchaseEntitlements: false
-#    PreferRemediation: false
-        
-#- task: FortifyOnDemandStatic@5
-#  inputs:
-#    FortifyProjects: '.'
-#    BSIToken: 'eyJ0ZW5hbnRJZCI6NjgsInRlbmFudENvZGUiOiJGcmFua2xpbkJhbmsiLCJyZWxlYXNlSWQiOjI0MjY4MywicGF5bG9hZFR5cGUiOiJBTkFMWVNJU19QQVlMT0FEIiwiYXNzZXNzbWVudFR5cGVJZCI6Mjc0LCJ0ZWNobm9sb2d5VHlwZSI6IkpBVkEvSjJFRSIsInRlY2hub2xvZ3lUeXBlSWQiOjcsInRlY2hub2xvZ3lWZXJzaW9uIjoiMS44IiwidGVjaG5vbG9neVZlcnNpb25JZCI6MTIsImF1ZGl0UHJlZmVyZW5jZSI6IkF1dG9tYXRlZCIsImF1ZGl0UHJlZmVyZW5jZUlkIjoyLCJpbmNsdWRlVGhpcmRQYXJ0eSI6ZmFsc2UsImluY2x1ZGVPcGVuU291cmNlQW5hbHlzaXMiOmZhbHNlLCJwb3J0YWxVcmkiOiJodHRwczovL2Ftcy5mb3J0aWZ5LmNvbSIsImFwaVVyaSI6Imh0dHBzOi8vYXBpLmFtcy5mb3J0aWZ5LmNvbSIsInNjYW5QcmVmZXJlbmNlIjoiU3RhbmRhcmQiLCJzY2FuUHJlZmVyZW5jZUlkIjoxfQ=='
-#    APIAuthenticationType: '1'
-#    APIKey: '135a9292-612a-4e47-b1b0-a192f3df2fb9'
-#    APISecret: 'UTRxc0hOQ0MveTVkMyF2V1JHVnFiT2VjYjhIMF1z0'
-#    EntitlementPreference: '1'
-#    PurchaseEntitlements: false    
-#    InProgressScanActionType: '0'
-#    RemediationScanPreference: '0'
-#    PolicyFailAction: '0'
-
 - task: FortifySCA@6
   inputs:
     runBuildTranslate: true
@@ -70,9 +36,3 @@ steps:
     fortifyServerName: 'SSC'
     fortifyApplicationName: 'EightBall'
     fortifyApplicationVersion: '1'
-
-#- task: FortifyDynamicAssessment@6
-#  inputs:
-#    ScanSettings: 'zerodefault'
-#    APIRoot: 'http://10.229.222.183:8083/'
-#    ScanResultsLocation: 'c:\tools\_work'
