@@ -20,6 +20,20 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
+- task: FortifyOnDemandStatic@8
+  inputs:
+    FortifyProjects: '.'
+    FodConnection: 'fod'
+    ReleaseOptions: '0'
+    ReleaseId: 242683
+    EntitlementSelection: '1'
+    EntitlementPreference: '1'
+    OverrideScanSettings: '2'
+    InProgressScanActionType: '2'
+    RemediationScanPreference: '2'
+    BuildType: 'mvn'
+    PolicyFailAction: '0'
+
 #- task: FortifySCA@6
 #  inputs:
 #    runBuildTranslate: true
