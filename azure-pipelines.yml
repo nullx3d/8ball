@@ -23,7 +23,7 @@ steps:
 - task: FortifyOnDemandStatic@8
   inputs:
     FortifyProjects: '.'
-    FodConnection: 'fod'
+    FodConnection: 'FoD'
     ReleaseOptions: '0'
     ReleaseId: 242683
     EntitlementSelection: '1'
