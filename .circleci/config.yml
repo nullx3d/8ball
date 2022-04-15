@@ -1,0 +1,71 @@
+version: 2.1
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - compile-build
+      - fod-sast:
+          requires:
+            - compile-build
+
+jobs:
+  compile-build:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - hello-spring-mvn-V2-{{ checksum "pom.xml" }}
+            - hello-spring-mvn-V2
+      - run: mvn dependency:go-offline
+      - run:
+          name: Build 
+          command: |
+            mvn clean compile
+      - save_cache:
+          paths:
+           - ~/.m2
+          key: hello-spring-mvn-V2-{{ checksum "pom.xml" }}
+      - store_test_results:
+          path: target/surefire-reports
+
+  fod-sast:
+    docker:
+      - image: fortifydocker/fortify-ci-tools:latest
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - hello-spring-mvn-V2-{{ checksum "pom.xml" }}
+            - hello-spring-mvn-V2
+      - run: mvn dependency:go-offline
+      - run:
+          name: FoD SAST Using fortify-ci-tools 
+          command: |
+            # Packaging the project for FoD.
+            # For other build tools (-bt none), add your build commands to download necessary dependencies and prepare according to the Fortify on Demand Packaging documentation.
+            # ScanCentral Client documentation is located at https://www.microfocus.com/documentation/fortify-software-security-center/ 
+
+            PACKAGE_OPTS="-bt mvn" 
+            
+            scancentral package $PACKAGE_OPTS -o package.zip
+            
+            # Uploading the packaged project to FoD 
+            FOD_URL="https://ams.fortify.com"
+            FOD_API_URL="https://api.ams.fortify.com/"
+            FOD_UPLOADER_OPTS="-ep 2 -pp 0"
+            FOD_NOTES="Triggered by CircleCI Pipeline $CIRCLE_PROJECT_USERNAME - $CIRCLE_BRANCH"
+            
+            # Sensitive Environment Variables below. Please consider using Context or Project Environment Variables  (https://circleci.com/docs/2.0/env-vars/#environment-variable-usage-options)
+            FOD_API_KEY="46f9ae05-7b50-448f-975d-6910ab945eaf"
+            FOD_API_SECRET="ABZEWaHJmcWaDZG8vM1dtbnJrU0tHcjhgbEc-RDdP0"
+            FOD_RELEASE="123456"
+            FOD_TENANT="RichmanBank"
+            
+            java -jar $FOD_UPLOAD -z package.zip -aurl $FOD_API_URL -purl $FOD_URL -rid $FOD_RELEASE -tc $FOD_TENANT -ac $FOD_API_KEY $FOD_API_SECRET $FOD_UPLOADER_OPTS -n "$FOD_NOTES"
+
+  
