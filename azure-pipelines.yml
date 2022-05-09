@@ -6,7 +6,7 @@
 trigger:
 - master
 
-pool: local_wi
+pool: Default
 #  vmImage: 'ubuntu-latest'
 
 steps:
