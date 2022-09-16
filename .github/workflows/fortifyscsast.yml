@@ -58,22 +58,5 @@ jobs:
         if: failure()
         with:
            name: scancentral-logs
-           path: ~/.fortify/scancentral/log
-           
-      # Run FortifyVulnerabilityExporter with the standard
-      # configuration file, credentials provided through GitHub
-      # secrets. The standard configuration file outputs the data
-      # to standard output (for debugging) and to a file named
-      # gh-fortify-sast.sarif in the GitHub workspace directory.
-      - uses: docker://fortifydocker/fortify-vulnerability-exporter:latest
-        with:
-          export_config: /config/SSCToGitHub.yml
-          ssc_baseUrl: ${{ secrets.SSC_URL }}
-          ssc_authToken: ${{ secrets.SSC_UPLOAD_TOKEN }}
-          ssc_version_name: ${{ secrets.SSC_APP }}:${{ secrets.SSC_APPVERSION }}
-          # Or use ssc_version_id: 1234
-          
-      # Uploaded the generated file containing Fortify vulnerabilities to GitHub.
-      - uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: ./gh-fortify-sast.sarif
+           path: ~/.fortify/scancentral/log           
+    
