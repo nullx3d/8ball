@@ -1,0 +1,35 @@
+name: SSC issues to GitHub using FortifyVulnerabilityExporter
+
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Optionally you could check out the source code and run a 
+      # Fortify scan before invoking FortifyVulnerabilityExporter.
+      
+       # Run FortifyVulnerabilityExporter with the standard
+      # configuration file, credentials provided through GitHub
+      # secrets. The standard configuration file outputs the data
+      # to standard output (for debugging) and to a file named
+      # gh-fortify-sast.sarif in the GitHub workspace directory.
+      - uses: docker://fortifydocker/fortify-vulnerability-exporter:latest
+        with:
+          export_config: /config/SSCToGitHub.yml
+          ssc_baseUrl: ${{ secrets.SSC_URL }}
+          ssc_authToken: ${{ secrets.SSC_UPLOAD_TOKEN }}
+          ssc_version_name: ${{ secrets.SSC_APP }}:${{ secrets.SSC_APPVERSION }}
+          # Or use ssc_version_id: 1234
+          
+      # Uploaded the generated file containing Fortify vulnerabilities to GitHub.
+      - uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: ./gh-fortify-sast.sarif
+          
+      # Optionally store the generated file for troubleshooting purposes.
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: sarif-files
