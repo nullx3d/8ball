@@ -36,7 +36,7 @@ jobs:
       - name: Download Fortify ScanCentral Client
         uses: fortify/gha-setup-scancentral-client@v1.2.0   
         with:
-          version: 22.1.0                                      # Optional as 20.2.0 is the default
+          version: 22.1.1                                      # Optional as 20.2.0 is the default
           client-auth-token: ${{ secrets.CLIENT_AUTH_TOKEN }}  # Optional, but required if ScanCentral Controller requires client authentication
 
       ### Run Fortify ScanCentral Client ###
@@ -45,7 +45,7 @@ jobs:
       #   For other build tools, add your build commands to the workflow to download necessary dependencies and prepare according to Fortify SCA documentation.
       - name: Perform SAST Scan
         #run: scancentral -url "$env:URL" start -bt mvn -upload -uptoken "$env:TOKEN" -application "$env:APPLICATION" -version "$env:VERSION"
-        run: scancentral -url "http://f0rtify.ddns.net:8180/ssc/" start -bt mvn -upload -uptoken "$env:TOKEN" -application "$env:APPLICATION" -version "$env:VERSION"
+        run: scancentral -url "http://f0rtify.ddns.net:8180/ssc" start -bt mvn -upload -uptoken "$env:TOKEN" -application "$env:APPLICATION" -version "$env:VERSION"
         env:                                            
           URL: ${{ secrets.SSC_URL }}
           TOKEN: ${{ secrets.SSC_UPLOAD_TOKEN }}
