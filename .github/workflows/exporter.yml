@@ -19,7 +19,8 @@ jobs:
         with:
           export_config: /config/SSCToGitHub.yml
           ssc_baseUrl: ${{ secrets.SSC_URL }}
-          ssc_authToken: ${{ secrets.SSC_CITOKEN }}
+          #ssc_authToken: ${{ secrets.SSC_CITOKEN }}
+          ssc_authToken: ec27824c-035f-4f09-aa61-f2b0d142f9f6
           ssc_version_name: ${{ secrets.SSC_APP }}:${{ secrets.SSC_APPVERSION }}
           # Or use ssc_version_id: 1234
           
