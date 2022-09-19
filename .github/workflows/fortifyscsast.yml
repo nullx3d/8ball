@@ -45,7 +45,8 @@ jobs:
       #   For other build tools, add your build commands to the workflow to download necessary dependencies and prepare according to Fortify SCA documentation.
       - name: Perform SAST Scan
         #run: scancentral -url "$env:URL" start -bt mvn -upload -uptoken "$env:TOKEN" -application "$env:APPLICATION" -version "$env:VERSION"
-        run: scancentral -url "http://f0rtify.ddns.net:8999/scancentral-ctrl/" start -bt mvn -upload -uptoken "$env:TOKEN" -application "$env:APPLICATION" -version "$env:VERSION"
+        #run: scancentral -url "http://f0rtify.ddns.net:8999/scancentral-ctrl/" start -bt mvn -upload -uptoken "$env:TOKEN" -application "$env:APPLICATION" -version "$env:VERSION"
+        #run: scancentral -url $URL start -bt mvn -upload -uptoken $TOKEN -application $APPLICATION -version $VERSION
         env:                                            
           URL: ${{ secrets.SSC_URL }}
           TOKEN: ${{ secrets.SSC_UPLOAD_TOKEN }}
