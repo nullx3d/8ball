@@ -21,19 +21,29 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: FortifyOnDemandStatic@8
+- task: FortifyScanCentralSAST@7
   inputs:
-    FortifyProjects: '.'
-    FodConnection: 'FoD'
-    ReleaseOptions: '0'
-    ReleaseId: 242683
-    EntitlementSelection: '1'
-    EntitlementPreference: '1'
-    OverrideScanSettings: '2'
-    InProgressScanActionType: '2'
-    RemediationScanPreference: '2'
-    BuildType: 'mvn'
-    PolicyFailAction: '0'
+    scanCentralClientToken: 'CHANGEME321!'
+    sscUrl: 'https://50.16.25.213:8443/ssc/'
+    sscCiToken: 'bd751716-e589-4f77-aee5-e8eba19a9139'
+    uploadToSSC: true
+    applicationName: '8ball'
+    applicationVersion: '1'
+    buildTool: 'mvn'
+
+#- task: FortifyOnDemandStatic@8
+#  inputs:
+#    FortifyProjects: '.'
+#    FodConnection: 'FoD'
+#    ReleaseOptions: '0'
+#    ReleaseId: 242683
+#    EntitlementSelection: '1'
+#    EntitlementPreference: '1'
+#    OverrideScanSettings: '2'
+#    InProgressScanActionType: '2'
+#    RemediationScanPreference: '2'
+#    BuildType: 'mvn'
+#    PolicyFailAction: '0'
 
 #- task: FortifySCA@6
 #  inputs:
