@@ -6,8 +6,11 @@
 trigger:
 - master
 
-pool: Default
+# pool: Default
 #  vmImage: 'ubuntu-latest'
+
+pool:
+  vmImage: 'windows-latest'
 
 steps:
 - task: Maven@3
