@@ -24,18 +24,21 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: FortifyScanCentralSAST@7
-  inputs:
-    scanCentralCtrlUrl: 'http://10.229.222.183:8999/scancentral-ctrl/'
-    scanCentralClientToken: '$(ScanCentral.ClientToken)'
-    sscUrl: 'http://10.229.222.183:8180/ssc/'
-    sscCiToken: '$(ScanCentral.SscCiToken)'
-    uploadToSSC: true
-    applicationName: 'EightBall'
-    applicationVersion: '1'
-    buildTool: 'mvn'
-    skipBuild: true
-    includeTest: false
-    block: true
-    outputFile: 'results.fpr'
+
+
+
+#- task: FortifyScanCentralSAST@7
+#  inputs:
+#    scanCentralCtrlUrl: 'http://10.229.222.183:8999/scancentral-ctrl/'
+#    scanCentralClientToken: '$(ScanCentral.ClientToken)'
+#    sscUrl: 'http://10.229.222.183:8180/ssc/'
+#    sscCiToken: '$(ScanCentral.SscCiToken)'
+#    uploadToSSC: true
+#    applicationName: 'EightBall'
+#    applicationVersion: '1'
+#    buildTool: 'mvn'
+#    skipBuild: true
+#    includeTest: false
+#    block: true
+#    outputFile: 'results.fpr'
 
