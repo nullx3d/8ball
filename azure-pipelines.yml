@@ -31,7 +31,7 @@ steps:
     sscUrl: 'http://10.229.222.183:8180/ssc/'
     sscCiToken: '$(ScanCentral.SscCiToken)'
     uploadToSSC: true
-    applicationName: '8ball'
+    applicationName: 'EightBall'
     applicationVersion: '1'
     buildTool: 'mvn'
     skipBuild: true
