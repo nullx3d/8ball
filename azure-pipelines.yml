@@ -33,7 +33,7 @@ steps:
     EntitlementSelection: '1'
     EntitlementPreference: '3'
     OverrideScanSettings: '2'
-    ScanCentralLocation: 'C:\client\SCClient2220\bin'
+    ScanCentralLocation: 'C:\client\SCClient2220\bin\scancentral.bat'
     InProgressScanActionType: '2'
     RemediationScanPreference: '2'
     BuildType: 'mvn'
