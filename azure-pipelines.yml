@@ -24,7 +24,15 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-
+- task: FortifySCA@7
+  inputs:
+    applicationType: 'java'
+    fortifyBuildId: '8ball'
+    fortifyScanType: 'LocalScan'
+    runFortifyUpload: true
+    fortifyServerName: 'SSC'
+    fortifyApplicationName: 'EigthtBall'
+    fortifyApplicationVersion: '1'
 
 #- task: FortifyOnDemandStatic@8
 #  inputs:
