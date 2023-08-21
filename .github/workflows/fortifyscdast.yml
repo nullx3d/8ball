@@ -9,4 +9,4 @@ jobs:
       - env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cmd curl --location --request POST "http://10.229.222.122:64814/api/scans/start-scan-cicd" --header "Authorization: FORTIFYTOKEN YmQ0OWRlZGItNTljZi00MDUzLTk1MTUtODVjYjZlMjk5Mjg2" --header "Content-Type: application/json" --data-raw "{\\"cicdToken\\":\\"a6953011-29c9-4e51-b52c-d8e14d6122b9\\"}"
+          cmd /c 'curl --location --request POST "http://10.229.222.122:64814/api/scans/start-scan-cicd" --header "Authorization: FORTIFYTOKEN YmQ0OWRlZGItNTljZi00MDUzLTk1MTUtODVjYjZlMjk5Mjg2" --header "Content-Type: application/json" --data-raw "{\\"cicdToken\\":\\"a6953011-29c9-4e51-b52c-d8e14d6122b9\\"}"'
