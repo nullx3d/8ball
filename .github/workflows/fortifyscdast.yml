@@ -1,7 +1,7 @@
 on:
   workflow_dispatch:
 jobs:
-  use_api:
+  scdast:
     runs-on: self-hosted
 #    permissions:
 #      issues: read
