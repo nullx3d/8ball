@@ -34,9 +34,10 @@ jobs:
 
       ### Set up Fortify ScanCentral Client ###
       - name: Download Fortify ScanCentral Client
-        uses: fortify/gha-setup-scancentral-client@v1.2.0   
+        uses: fortify/gha-setup-scancentral-client@v1   
         with:
-          version: 22.1.0                                      # Optional as 20.2.0 is the default
+          version: 23.1.0                                      # On-prem customers should specify a client version that matches their ScanCentral environment
+                                                               # FoD customers usually should not specify a version but rather rely on the default version
           client-auth-token: ${{ secrets.CLIENT_AUTH_TOKEN }}  # Optional, but required if ScanCentral Controller requires client authentication
 
       ### Run Fortify ScanCentral Client ###
@@ -44,39 +45,18 @@ jobs:
       #   ScanCentral Client will download dependencies for maven, gradle and msbuild projects.
       #   For other build tools, add your build commands to the workflow to download necessary dependencies and prepare according to Fortify SCA documentation.
       - name: Perform SAST Scan
-        #run: scancentral -url "$env:URL" start -bt mvn -upload -uptoken "$env:TOKEN" -application "$env:APPLICATION" -version "$env:VERSION"
-        #run: scancentral -url "http://f0rtify.ddns.net:8999/scancentral-ctrl/" start -bt mvn -upload -uptoken "$env:TOKEN" -application "$env:APPLICATION" -version "$env:VERSION"
-        run: scancentral -url http://f0rtify.ddns.net:8999/scancentral-ctrl/ start -bt mvn -upload -uptoken $TOKEN -application $APPLICATION -version $VERSION
+        run: scancentral -url ${SC_CONTROLLER_URL} start $BUILD_OPTS -upload -application $APPLICATION -version $VERSION -uptoken $SSC_UPLOAD_TOKEN
         env:                                            
-          URL: ${{ secrets.SSC_URL }}
-          TOKEN: ${{ secrets.SSC_UPLOAD_TOKEN }}
-          APPLICATION: ${{ secrets.SSC_APP }}
-          VERSION: ${{ secrets.SSC_APPVERSION }}
+          SC_CONTROLLER_URL: ${{ secrets.SC_CONTROLLER_URL }}
+          SSC_UPLOAD_TOKEN: ${{ secrets.SSC_UPLOAD_TOKEN }}
+          APPLICATION: "My Application"
+          VERSION: "1.0"
           BUILD_OPTS: "-bt mvn"
-          
+
       ### Archive ScanCentral Client logs on failure ###
       - name: Save ScanCentral Logs
         uses: actions/upload-artifact@v2                
         if: failure()
         with:
            name: scancentral-logs
-           path: ~/.fortify/scancentral/log           
-    
-     # Run FortifyVulnerabilityExporter with the standard
-      # configuration file, credentials provided through GitHub
-      # secrets. The standard configuration file outputs the data
-      # to standard output (for debugging) and to a file named
-      # gh-fortify-sast.sarif in the GitHub workspace directory.
-      - uses: docker://fortifydocker/fortify-vulnerability-exporter:latest
-        with:
-          export_config: /config/SSCToGitHub.yml
-          ssc_baseUrl: ${{ secrets.SSC_URL }}
-          #ssc_authToken: ${{ secrets.SSC_CITOKEN }}
-          ssc_authToken: ec27824c-035f-4f09-aa61-f2b0d142f9f6
-          ssc_version_name: ${{ secrets.SSC_APP }}:${{ secrets.SSC_APPVERSION }}
-          # Or use ssc_version_id: 1234
-          
-      # Uploaded the generated file containing Fortify vulnerabilities to GitHub.
-      - uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: ./gh-fortify-sast.sarif
+           path: ~/.fortify/scancentral/log
