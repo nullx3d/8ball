@@ -21,7 +21,7 @@ steps:
     fortifyBuildId: '8ball'
     fortifyScanType: 'LocalScan'
     runFortifyUpload: true
-    fortifyServerName: 'SSC'
+    fortifyServerName: 'ssc test'
     fortifyApplicationName: 'EightBall'
     fortifyApplicationVersion: '1'
 
