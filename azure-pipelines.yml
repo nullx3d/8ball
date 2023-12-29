@@ -13,16 +13,7 @@ pool: Default
 #  vmImage: 'windows-latest'
 
 steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.11'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+
 
 - task: FortifySCA@7
   inputs:
@@ -34,35 +25,8 @@ steps:
     fortifyApplicationName: 'EightBall'
     fortifyApplicationVersion: '1'
 
-#- task: FortifyOnDemandStatic@8
-#  inputs:
-#    FortifyProjects: '.'
-#    FodConnection: 'FoD'
-#    ReleaseOptions: '0'
-#    ReleaseId: 756362
-#    EntitlementSelection: '1'
-#    EntitlementPreference: '3'
-#    OverrideScanSettings: '2'
-#    ScanCentralLocation: 'C:\client\SCClient2220'
-#    InProgressScanActionType: '2'
-#    RemediationScanPreference: '2'
-#    BuildType: 'mvn'
-#    IncludeTests: true
-#    PolicyFailAction: '0'
 
 
-#- task: FortifyScanCentralSAST@7
-#  inputs:
-#    scanCentralCtrlUrl: 'http://10.229.222.183:8999/scancentral-ctrl/'
-#    scanCentralClientToken: '$(ScanCentral.ClientToken)'
-#    sscUrl: 'http://10.229.222.183:8180/ssc/'
-#    sscCiToken: '$(ScanCentral.SscCiToken)'
-#    uploadToSSC: true
-#    applicationName: 'EightBall'
-#    applicationVersion: '1'
-#    buildTool: 'mvn'
-#    skipBuild: true
-#    includeTest: false
-#    block: true
-#    outputFile: 'results.fpr'
+
+
 
