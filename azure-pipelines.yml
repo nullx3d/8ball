@@ -25,6 +25,12 @@ steps:
     fortifyApplicationName: 'test1'
     fortifyApplicationVersion: 'test1'
 
+ 
+- script: |
+    if (steps.FortifySCA@7.outputs.highSeverityCount > 0) {
+      Write-Host "Yüksek seviyeli bir güvenlik açığı bulundu. Akış kırılıyor."
+      Exit 1
+    }
 
 
 
