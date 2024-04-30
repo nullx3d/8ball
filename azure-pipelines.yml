@@ -4,7 +4,7 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: 'WI -u https://google.com -r "Executive Summary" -y Standard -f C:\Users\Administrator\Desktop\tesbatu123.pdf -gp'
+    script: '$wi -u https://google.com -r "Executive Summary" -y Standard -f C:\Users\Administrator\Desktop\tesbatu123.pdf -gp'
 
 
 
