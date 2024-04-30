@@ -1,37 +1,10 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
-trigger:
-- master
-
 pool: Default
-#  vmImage: 'ubuntu-latest'
-
-#pool:
-#  vmImage: 'windows-latest'
 
 steps:
-
-
-- task: FortifySCA@7
+- task: PowerShell@2
   inputs:
-    applicationType: 'java'
-    fortifyBuildId: '8ball'
-    fortifyScanType: 'LocalScan'
-    runFortifyUpload: true
-    fortifyServerName: 'ssc test'
-    fortifyApplicationName: 'test1'
-    fortifyApplicationVersion: 'test1'
-
- 
-- script: |
-    if (steps.FortifySCA@7.outputs.highSeverityCount > 0) {
-      Write-Host "Yüksek seviyeli bir güvenlik açığı bulundu. Akış kırılıyor."
-      Exit 1
-    }
-
+    targetType: 'inline'
+    script: 'WI.exe -u https://google.com -r "Executive Summary" -y Standard -f C:\Users\Administrator\Desktop\tesbatu123.pdf -gp'
 
 
 
