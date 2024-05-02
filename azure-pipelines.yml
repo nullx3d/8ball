@@ -6,5 +6,5 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: '.\WI.exe -u https://google.com -r "Executive Summary" -y Standard -f C:\Users\Administrator\Desktop\test12345.pdf -gp'
+    script: '.\WI.exe -u https://google.com -r "Vulnerability" -y Standard -f C:\Users\Administrator\Desktop\test12345.pdf -gp'
     workingDirectory: 'C:\Program Files\Fortify\Fortify WebInspect'
