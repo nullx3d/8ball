@@ -2,13 +2,46 @@ trigger:
 - main
 
 stages:
-- stage: BatuhanTestStage
-  displayName: "Batuhan Test Stage"
+- stage: Build
+  displayName: "Build Stage"
+  jobs:
+  - job: BuildJob
+    displayName: "Agentless Build Job"
+    pool: 
+      name: 'Server' # Agentless işlem
+    steps:
+    - script: echo "Building the project..."
+      displayName: "Echo Build Message"
+
+- stage: Test
+  displayName: "Test Stage"
   jobs:
   - job: TestJob
     displayName: "Agentless Test Job"
-    pool:
-      vmImage: '' # Agentless işlemler için boş bırakılır
-      name: 'Server' # Bu, agentless işlemleri işaret eder
+    pool: 
+      name: 'Server' # Agentless işlem
+    steps:
+    - script: echo "Running the tests..."
+      displayName: "Echo Test Message"
 
-      
+- stage: Deploy
+  displayName: "Deploy Stage"
+  jobs:
+  - job: DeployJob
+    displayName: "Agentless Deploy Job"
+    pool: 
+      name: 'Server' # Agentless işlem
+    steps:
+    - script: echo "Deploying the application..."
+      displayName: "Echo Deploy Message"
+
+- stage: Cleanup
+  displayName: "Cleanup Stage"
+  jobs:
+  - job: CleanupJob
+    displayName: "Agentless Cleanup Job"
+    pool: 
+      name: 'Server' # Agentless işlem
+    steps:
+    - script: echo "Cleaning up the resources..."
+      displayName: "Echo Cleanup Message"
