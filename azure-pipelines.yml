@@ -1,10 +1,36 @@
-trigger:
-- main
+stages:
+- stage: Build
+  displayName: "Build Stage"
+  jobs:
+  - job: BuildJob
+    displayName: "Build Job"
+    steps:
+    - script: echo Building the project...
+      displayName: "Echo Build Message"
 
-pool:  default
-steps:
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: '.\WI.exe -s ''C:\ProgramData\HP\HP WebInspect\Settings\wiazure.xml'' -r "Vulnerability" -y Standard -f C:\Users\Administrator\Desktop\test123456.pdf -gp'
-    workingDirectory: 'C:\Program Files\Fortify\Fortify WebInspect'
+- stage: Test
+  displayName: "Test Stage"
+  jobs:
+  - job: TestJob
+    displayName: "Test Job"
+    steps:
+    - script: echo Running tests...
+      displayName: "Echo Test Message"
+
+- stage: Deploy
+  displayName: "Deploy Stage"
+  jobs:
+  - job: DeployJob
+    displayName: "Deploy Job"
+    steps:
+    - script: echo Deploying the application...
+      displayName: "Echo Deploy Message"
+
+- stage: Cleanup
+  displayName: "Cleanup Stage"
+  jobs:
+  - job: CleanupJob
+    displayName: "Cleanup Job"
+    steps:
+    - script: echo Cleaning up resources...
+      displayName: "Echo Cleanup Message"
