@@ -1,36 +1,47 @@
+trigger:
+- main
+
 stages:
 - stage: Build
   displayName: "Build Stage"
   jobs:
   - job: BuildJob
-    displayName: "Build Job"
+    displayName: "Self-hosted Build Job"
+    pool:
+      name: batuhantest # Self-hosted ajan havuzu
     steps:
-    - script: echo Building the project...
+    - script: echo "Building the project..."
       displayName: "Echo Build Message"
 
 - stage: Test
   displayName: "Test Stage"
   jobs:
   - job: TestJob
-    displayName: "Test Job"
+    displayName: "Self-hosted Test Job"
+    pool:
+      name: batuhantest # Self-hosted ajan havuzu
     steps:
-    - script: echo Running tests...
+    - script: echo "Running the tests..."
       displayName: "Echo Test Message"
 
 - stage: Deploy
   displayName: "Deploy Stage"
   jobs:
   - job: DeployJob
-    displayName: "Deploy Job"
+    displayName: "Self-hosted Deploy Job"
+    pool:
+      name: batuhantest # Self-hosted ajan havuzu
     steps:
-    - script: echo Deploying the application...
+    - script: echo "Deploying the application..."
       displayName: "Echo Deploy Message"
 
 - stage: Cleanup
   displayName: "Cleanup Stage"
   jobs:
   - job: CleanupJob
-    displayName: "Cleanup Job"
+    displayName: "Self-hosted Cleanup Job"
+    pool:
+      name: batuhantest # Self-hosted ajan havuzu
     steps:
-    - script: echo Cleaning up resources...
+    - script: echo "Cleaning up the resources..."
       displayName: "Echo Cleanup Message"
