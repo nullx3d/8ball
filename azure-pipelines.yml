@@ -8,7 +8,7 @@ stages:
   - job: BuildJob
     displayName: "Self-hosted Build Job"
     pool:
-      name: batuhantest # Self-hosted ajan havuzu
+      name: default # Self-hosted ajan havuzu
     steps:
     - script: echo "Building the project..."
       displayName: "Echo Build Message"
@@ -19,7 +19,7 @@ stages:
   - job: TestJob
     displayName: "Self-hosted Test Job"
     pool:
-      name: batuhantest # Self-hosted ajan havuzu
+      name: default # Self-hosted ajan havuzu
     steps:
     - script: echo "Running the tests..."
       displayName: "Echo Test Message"
@@ -30,7 +30,7 @@ stages:
   - job: DeployJob
     displayName: "Self-hosted Deploy Job"
     pool:
-      name: batuhantest # Self-hosted ajan havuzu
+      name: default # Self-hosted ajan havuzu
     steps:
     - script: echo "Deploying the application..."
       displayName: "Echo Deploy Message"
@@ -41,7 +41,7 @@ stages:
   - job: CleanupJob
     displayName: "Self-hosted Cleanup Job"
     pool:
-      name: batuhantest # Self-hosted ajan havuzu
+      name: default # Self-hosted ajan havuzu
     steps:
     - script: echo "Cleaning up the resources..."
       displayName: "Echo Cleanup Message"
