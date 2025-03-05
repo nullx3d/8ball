@@ -1,4 +1,6 @@
 trigger:
+- task: Attackflow Azure DevOps Pipeline@0
+  inputs:
 - main
 
 stages:
