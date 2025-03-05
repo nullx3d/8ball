@@ -1,3 +1,36 @@
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
+stages:
+- stage: BuildStage
+  displayName: 'Build Stage'
+  jobs:
+  - job: BuildJob
+    displayName: 'Build Job'
+    steps:
+    - script: echo Building the project...
+      displayName: 'Run build script'
+
+- stage: TestStage
+  displayName: 'Test Stage'
+  jobs:
+  - job: TestJob
+    displayName: 'Test Job'
+    steps:
+    - script: echo Running tests...
+      displayName: 'Run test script'
+
+- stage: DeployStage
+  displayName: 'Deploy Stage'
+  jobs:
+  - job: DeployJob
+    displayName: 'Deploy Job'
+    steps:
+    - script: echo Deploying the application...
+      displayName: 'Run deploy script'
+
+- stage: CleanupStage
+  displayName: 'Cleanup Stage'
+  jobs:
+  - job: CleanupJob
+    displayName: 'Cleanup Job'
+    steps:
+    - script: echo Cleaning up...
+      displayName: 'Run cleanup script'
